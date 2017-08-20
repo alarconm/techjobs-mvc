@@ -40,7 +40,8 @@ public class ListController {
         if (column.equals("all")) {
             ArrayList<HashMap<String, String>> jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
-            model.addAttribute("jobs", jobs);
+            model.addAttribute("results", jobs);
+            model.addAttribute("count", jobs.size()); //Added to display count at top of results
             return "list-jobs";
         } else {
             ArrayList<String> items = JobData.findAll(column);
