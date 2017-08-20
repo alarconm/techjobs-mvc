@@ -29,14 +29,14 @@ public class SearchController {
 
             model.addAttribute("columns", ListController.columnChoices);
 
-//      Search all job fields
+//      Search all job fields by the value given
         if (searchType.equals("all")) {
             ArrayList<HashMap<String, String>> results = JobData.findByValue(searchTerm);
             model.addAttribute("results", results);
             model.addAttribute("count", results.size());
             return "search";
         }
-//      Search specified field
+//      Search specified field by field given and value given
             ArrayList<HashMap<String, String>> results = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("results", results);
             model.addAttribute("count", results.size());
