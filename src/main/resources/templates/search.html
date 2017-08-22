@@ -44,7 +44,7 @@
     <span th:each="result : ${results}">
         <table>
         <tr class="job-listing" th:each="item : ${result}" >
-            <th th:text="${item.key} + ':'"></th><td th:text="${item.value}"></td>
+            <th th:text="${#strings.capitalizeWords(item.key)} + ':'"></th><td th:text="${item.value}"></td>
         </tr>
         </table>
         <br />
