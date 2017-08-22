@@ -40,6 +40,7 @@ public class SearchController {
             ArrayList<HashMap<String, String>> results = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("results", results);
             model.addAttribute("count", results.size());
+            model.addAttribute("checked", searchType); //Keeps same field checked when displaying results
             return "search";
     }
 
