@@ -29,6 +29,7 @@ public class SearchController {
 
             model.addAttribute("columns", ListController.columnChoices);
 
+        // TODO: 8/28/2017 Refactor into an if/else to remove redundancy. Count can come from template
 //      Search all job fields by the value given
         if (searchType.equals("all")) {
             ArrayList<HashMap<String, String>> results = JobData.findByValue(searchTerm);

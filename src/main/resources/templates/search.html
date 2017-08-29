@@ -35,16 +35,18 @@
     </form>
 
     <hr />
+    <!--Fix search for both key and value-->
 
     <!--Nested loop to display each job set in a table.
     Results display the count as long as it isn't null.
     Fragment also used in list displays-->
     <div th:fragment="listing-loop">
-        <h1 th:text="${count != null}? ${count} + 'Result(s)' : ''"></h1>
+        <h1 th:text="${count != null}? ${count} + ' Result(s)' : ''"></h1>
     <span th:each="result : ${results}">
-        <table>
-        <tr class="job-listing" th:each="item : ${result}" >
-            <th th:text="${#strings.capitalizeWords(item.key)} + ':'"></th><td th:text="${item.value}"></td>
+        <table class="job-listing">
+        <tr th:each="item : ${result}" >
+            <th th:text="${#strings.capitalizeWords(item.key)} + ':'"></th>
+            <td><a th:href="@{/list/jobs(column=${item.key}, value=${item.value})}" th:text="${item.value}"></a></td>
         </tr>
         </table>
         <br />
