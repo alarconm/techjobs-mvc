@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by LaunchCode
@@ -32,13 +33,13 @@ public class SearchController {
         // TODO: 8/28/2017 Refactor into an if/else to remove redundancy. Count can come from template
 //      Search all job fields by the value given
         if (searchType.equals("all")) {
-            ArrayList<HashMap<String, String>> results = JobData.findByValue(searchTerm);
+            List<HashMap<String, String>> results = JobData.findByValue(searchTerm);
             model.addAttribute("results", results);
             model.addAttribute("count", results.size());
             return "search";
         }
 //      Search specified field by field given and value given
-            ArrayList<HashMap<String, String>> results = JobData.findByColumnAndValue(searchType, searchTerm);
+            List<HashMap<String, String>> results = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("results", results);
             model.addAttribute("count", results.size());
             model.addAttribute("checked", searchType); //Keeps same field checked when displaying results
